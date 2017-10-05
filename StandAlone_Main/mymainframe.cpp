@@ -8,14 +8,26 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    const UInt_t canvas_w = 500;//in pixel
    const UInt_t canvas_h = 500;//in pixel
 
+   //Create a horizontal frame widget with fEcanvas, fEcanvas_ch1
+   TGHorizontalFrame *hframe_canvas_row = new TGHorizontalFrame(fMain,1500,900);
+
    // Create canvas widget
    //ch_0
    fEcanvas = new TRootEmbeddedCanvas("Ecanvas",fMain,canvas_w,canvas_h);
-   fMain->AddFrame(fEcanvas, new TGLayoutHints(kLHintsExpandX |kLHintsExpandY, 10,10,10,1));
+   //fMain->AddFrame(fEcanvas, new TGLayoutHints(kLHintsExpandX |kLHintsExpandY, 10,10,10,1));
+   hframe_canvas_row->AddFrame(fEcanvas, new TGLayoutHints(kLHintsExpandX));
 
    //ch_1
-   fEcanvas_ch1 = new TRootEmbeddedCanvas("Ecanvas",fMain,canvas_w,canvas_h);
-   fMain->AddFrame(fEcanvas_ch1, new TGLayoutHints(kLHintsExpandX |kLHintsExpandY, 10,10,10,1));
+   fEcanvas_ch1 = new TRootEmbeddedCanvas("Ecanvas_ch1",fMain,canvas_w,canvas_h);
+   //fMain->AddFrame(fEcanvas_ch1, new TGLayoutHints(kLHintsExpandX |kLHintsExpandY, 10,10,10,1));
+   hframe_canvas_row->AddFrame(fEcanvas_ch1, new TGLayoutHints(kLHintsExpandX));
+
+   //ch_2
+   fEcanvas_ch2 = new TRootEmbeddedCanvas("Ecanvas_ch2",fMain,canvas_w,canvas_h);
+   hframe_canvas_row->AddFrame(fEcanvas_ch2, new TGLayoutHints(kLHintsExpandX));
+
+
+   fMain->AddFrame(hframe_canvas_row, new TGLayoutHints(kLHintsExpandX));
 
 
    // Create a horizontal frame widget with buttons
@@ -67,6 +79,12 @@ void MyMainFrame::DoDraw()
     fCanvas_ch1->cd();
     f1->Draw();
     fCanvas_ch1->Update();
+
+    //ch_2
+    TCanvas *fCanvas_ch2 = fEcanvas_ch2->GetCanvas();
+    fCanvas_ch2->cd();
+    f1->Draw();
+    fCanvas_ch2->Update();
 
 
 }

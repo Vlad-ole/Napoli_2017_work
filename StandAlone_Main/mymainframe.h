@@ -20,7 +20,7 @@ class MyMainFrame
     RQ_OBJECT("MyMainFrame")
 private:
     TGMainFrame *fMain;
-    TRootEmbeddedCanvas *fEcanvas, *fEcanvas_ch1;
+    TRootEmbeddedCanvas *fEcanvas, *fEcanvas_ch1, *fEcanvas_ch2, *fEcanvas_ch3, *fEcanvas_ch4, *fEcanvas_ch5;
 public:
     MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h);
     virtual
