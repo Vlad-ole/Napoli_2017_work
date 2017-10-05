@@ -11,7 +11,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     test_class.cpp \
-    example.C
+    example.C \
+    GIU_Builder.C \
+    GIU_Builder_v2.C \
+    GIU_Builder_v3.C \
+    GIU_Builder_v4.C \
+    GIU_Builder_v5.C
 
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"

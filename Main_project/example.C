@@ -13,7 +13,7 @@ class MyMainFrame {
    RQ_OBJECT("MyMainFrame")
 private:
    TGMainFrame         *fMain;
-   TRootEmbeddedCanvas *fEcanvas;
+   TRootEmbeddedCanvas *fEcanvas, *fEcanvas2;
 public:
    MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h);
    virtual ~MyMainFrame();
@@ -26,9 +26,15 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h) {
    fMain = new TGMainFrame(p,w,h);
 
    // Create canvas widget
-   fEcanvas = new TRootEmbeddedCanvas("Ecanvas",fMain,200,200);
+   fEcanvas = new TRootEmbeddedCanvas("Ecanvas",fMain,180,100);
    fMain->AddFrame(fEcanvas, new TGLayoutHints(kLHintsExpandX |
                    kLHintsExpandY, 10,10,10,1));
+
+   fEcanvas2 = new TRootEmbeddedCanvas("Ecanvas2",fMain,180,100);
+   fMain->AddFrame(fEcanvas2, new TGLayoutHints(kLHintsExpandX |
+                   kLHintsExpandY, 10,10,10,1));
+
+
    // Create a horizontal frame widget with buttons
    TGHorizontalFrame *hframe = new TGHorizontalFrame(fMain,200,40);
    TGTextButton *draw = new TGTextButton(hframe,"&Draw");
@@ -77,5 +83,5 @@ MyMainFrame::~MyMainFrame() {
 
 void example() {
    // Popup the GUI...
-   new MyMainFrame(gClient->GetRoot(),200,200);
+   new MyMainFrame(gClient->GetRoot(),1800,1000);
 }
