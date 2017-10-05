@@ -10,13 +10,10 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    test_class.cpp \
     example.C \
     GIU_Builder.C \
-    GIU_Builder_v2.C \
-    GIU_Builder_v3.C \
-    GIU_Builder_v4.C \
-    GIU_Builder_v5.C
+    tmp.cpp \
+    mymainframe.cpp
 
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
@@ -103,4 +100,5 @@ LIBS += -L"/home/darkside/Vlad_Programs/root/lib" \
  -lXMLIO
 
 HEADERS += \
-    test_class.h
+    test_class.h \
+    mymainframe.h

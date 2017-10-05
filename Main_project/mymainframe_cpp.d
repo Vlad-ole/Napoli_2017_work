@@ -1,0 +1,51 @@
+
+# DO NOT DELETE
+
+./mymainframe_cpp.so: mymainframe.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGClient.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TObject.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/Rtypes.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/RConfig.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/RVersion.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/DllImport.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/Rtypeinfo.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/snprintf.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/strlcpy.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGenericClassInfo.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TSchemaHelper.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TStorage.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TVersionCheck.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/Riosfwd.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TBuffer.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/GuiTypes.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TString.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TMathBase.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TQObject.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGButton.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGFrame.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGWindow.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGObject.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TVirtualX.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TNamed.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TAttLine.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TAttFill.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TAttText.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TAttMarker.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGDimension.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGGC.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TRefCnt.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGFont.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGLayout.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGString.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TList.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TSeqCollection.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TCollection.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TIterator.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGWidget.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/WidgetMessageTypes.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TRootEmbeddedCanvas.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/TGCanvas.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/RQ_OBJECT.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/Varargs.h
+./mymainframe_cpp.so: /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/cintdictversion.h /home/darkside/Vlad_Programs/root_roofit_fft_gsl/include/RVersion.h
+mymainframe_cpp__ROOTBUILDVERSION= 5.34/36

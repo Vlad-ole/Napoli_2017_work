@@ -3,16 +3,16 @@ QT -= gui
 
 CONFIG += c++11
 
-TARGET = RootGUIStandAlone
+TARGET = StandAlone_Main
 CONFIG += console
 CONFIG -= app_bundle
 
 TEMPLATE = app
 
 SOURCES += \
-    example2a.cxx \
-    example.C \
-    tmp.cpp
+    mymainframe.cpp \
+    tmp.cpp \
+    main.cxx
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
 
@@ -98,5 +98,6 @@ LIBS += -L"/home/darkside/Vlad_Programs/root/lib" \
  -lXMLIO
 
 HEADERS += \
-    example2a.h \
-    ex2aLinkDef.h
+    mymainframe.h \
+    linkdef.h
+

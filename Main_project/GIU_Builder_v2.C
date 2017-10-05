@@ -13,8 +13,7 @@
 #ifndef ROOT_TG3DLine
 #include "TG3DLine.h"
 #endif
-#ifndef ROOT_TGMdiFrame
-#include "TGMdiFrame.h"
+#ifndef ROOT_TGMdiFrame#include "TGMdiFrame.h"
 #endif
 #ifndef ROOT_TGMdiMainFrame
 #include "TGMdiMainFrame.h"

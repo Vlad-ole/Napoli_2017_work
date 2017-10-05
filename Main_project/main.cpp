@@ -1,10 +1,11 @@
-//#include <QCoreApplication>
+//c++
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iomanip>
 
+//root cern general
 #include "TF1.h"
 #include "TGraph.h"
 #include "TFile.h"
@@ -21,12 +22,20 @@
 #include "TAxis.h"
 #include "TSpectrum.h"
 
+
+//this project
+#include "mymainframe.h"
+
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    //QCoreApplication a(argc, argv);
+//    // Popup the GUI...
+//    new MyMainFrame(gClient->GetRoot(),1800,1000);
 
-    //return a.exec();
-    return 0;
+//    //
+//    cout << "all is ok" << endl;
+//    return 0;
+
+
 }
