@@ -11,7 +11,6 @@ TEMPLATE = app
 
 SOURCES += \
     mymainframe.cpp \
-    tmp.cpp \
     main.cpp
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
