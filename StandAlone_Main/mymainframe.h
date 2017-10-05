@@ -1,20 +1,27 @@
 #ifndef MYMAINFRAME_H
 #define MYMAINFRAME_H
 
+#include <TApplication.h>
+#include <TGClient.h>
+#include <TCanvas.h>
+#include <TF1.h>
+#include <TRandom.h>
+#include <TGButton.h>
+#include <TRootEmbeddedCanvas.h>
+
 
 #include <TQObject.h>
 #include <RQ_OBJECT.h>
 class TGWindow;
 class TGMainFrame;
 class TRootEmbeddedCanvas;
-class MyMainFrame {
+class MyMainFrame
+{
     RQ_OBJECT("MyMainFrame")
-    private
-        :
-          TGMainFrame         *fMain;
+private:
+    TGMainFrame *fMain;
     TRootEmbeddedCanvas *fEcanvas;
-    public
-    :
+public:
     MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h);
     virtual
     ~MyMainFrame();
