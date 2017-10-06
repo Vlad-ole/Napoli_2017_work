@@ -8,8 +8,16 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    const UInt_t canvas_w = 500;//in pixel
    const UInt_t canvas_h = 500;//in pixel
 
+   //Create a horizontal frame for control_panel(cpanel_canv) and canvases
+   TGHorizontalFrame *hframe_cpanel_canv = new TGHorizontalFrame(fMain,1500,900);
+
+   //Create a vertical frame for control_panel
+   TGVerticalFrame *vframe_control_panel = new TGVerticalFrame(hframe_cpanel_canv,300,900);
+
+
+   //---------------- canvases
    //Create vertical frame for 2 rows
-   TGVerticalFrame *vframe_canvases = new TGVerticalFrame(fMain,1500,900);
+   TGVerticalFrame *vframe_canvases = new TGVerticalFrame(hframe_cpanel_canv,1500,900);
 
    //----
    //row 1
@@ -49,24 +57,31 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    fEcanvas_ch5 = new TRootEmbeddedCanvas("Ecanvas_ch5",hframe_canvas_row2,canvas_w,canvas_h);
    hframe_canvas_row2->AddFrame(fEcanvas_ch5, new TGLayoutHints(kLHintsExpandX));
    //----
+   //---------------- end canvases
 
-   //Fill vertical frame with 2 rows
+
+   //Fill vframe_canvases frame with 2 rows
    vframe_canvases->AddFrame(hframe_canvas_row, new TGLayoutHints(kLHintsExpandY));
    vframe_canvases->AddFrame(hframe_canvas_row2, new TGLayoutHints(kLHintsExpandY));
-   fMain->AddFrame(vframe_canvases, new TGLayoutHints(kLHintsExpandY));
+
+
+
+   //fMain->AddFrame(vframe_canvases, new TGLayoutHints(kLHintsExpandY));
+
+
 
    // Create a horizontal frame widget with buttons
-   TGHorizontalFrame *hframe = new TGHorizontalFrame(fMain,200,40);
+   TGHorizontalFrame *hframe = new TGHorizontalFrame(vframe_control_panel,200,40);
    TGTextButton *draw = new TGTextButton(hframe,"&Draw");
    draw->Connect("Clicked()","MyMainFrame",this,"DoDraw()");
-   hframe->AddFrame(draw, new TGLayoutHints(kLHintsCenterX,
-                                            5,5,3,4));
-   TGTextButton *exit = new TGTextButton(hframe,"&Exit",
-                                "gApplication->Terminate(0)");
-   hframe->AddFrame(exit, new TGLayoutHints(kLHintsCenterX,
-                                            5,5,3,4));
-   fMain->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,
-                                             2,2,2,2));
+   hframe->AddFrame(draw, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
+   TGTextButton *exit = new TGTextButton(hframe,"&Exit","gApplication->Terminate(0)");
+   hframe->AddFrame(exit, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
+   vframe_control_panel->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
+
+   hframe_cpanel_canv->AddFrame(vframe_control_panel, new TGLayoutHints(kLHintsExpandY));
+   hframe_cpanel_canv->AddFrame(vframe_canvases, new TGLayoutHints(kLHintsExpandY));
+   fMain->AddFrame(hframe_cpanel_canv, new TGLayoutHints(kLHintsExpandY));
 
    // Set a name to the main frame
    fMain->SetWindowName("Simple Example");
