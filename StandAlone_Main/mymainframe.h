@@ -32,6 +32,7 @@ public:
     virtual
     ~MyMainFrame();
     void DoDraw();
+    void DataAcquisition();
 };
 
 #endif // MYMAINFRAME_H

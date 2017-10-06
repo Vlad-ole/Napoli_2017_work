@@ -31,9 +31,12 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    hframe->AddFrame(draw, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
    TGTextButton *exit = new TGTextButton(hframe,"&Exit","gApplication->Terminate(0)");
    hframe->AddFrame(exit, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
-   vframe_control_panel->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
 
-//   fMain->AddFrame(vframe_control_panel, fL_control_panel);
+   TGTextButton *button_start = new TGTextButton(vframe_control_panel,"&Start acquisition");
+   button_start->Connect("Clicked()","MyMainFrame",this,"DataAcquisition()");
+
+   vframe_control_panel->AddFrame(button_start, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
+   vframe_control_panel->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
    //--------------end control_panel
 
 
@@ -135,7 +138,7 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    fMain->AddFrame(hframe_control_panel_tab_frame, fL_fMain);
 
    // Set a name to the main frame
-   fMain->SetWindowName("Simple Example");
+   fMain->SetWindowName("Online monitor for ReD experiment");
 
    // Map all subwindows of main frame
    fMain->MapSubwindows();
@@ -208,6 +211,18 @@ void MyMainFrame::DoDraw()
     fCanvas_Npe_vs_time->Update();
 
 }
+
+void MyMainFrame::DataAcquisition()
+{
+    std::cout << "in MyMainFrame::DataAcquisition()" << std::endl;
+
+//    while (1)
+//    {
+
+//    }
+
+}
+
 
 MyMainFrame::~MyMainFrame()
 {
