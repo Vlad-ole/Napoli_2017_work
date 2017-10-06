@@ -1,17 +1,22 @@
 #ifndef MYMAINFRAME_H
 #define MYMAINFRAME_H
 
+//root cern general
 #include <TApplication.h>
-#include <TGClient.h>
 #include <TCanvas.h>
 #include <TF1.h>
 #include <TRandom.h>
+
+//root cern GUI
+#include <TGClient.h>
 #include <TGButton.h>
 #include <TRootEmbeddedCanvas.h>
-
-
+#include "TGFrame.h"
+#include "TGTab.h"
 #include <TQObject.h>
 #include <RQ_OBJECT.h>
+
+
 class TGWindow;
 class TGMainFrame;
 class TRootEmbeddedCanvas;

@@ -5,14 +5,23 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    // Create a main frame
    fMain = new TGMainFrame(p,w,h);
 
+   //set size
    const UInt_t canvas_w = 500;//in pixel
    const UInt_t canvas_h = 500;//in pixel
+
 
    //Different layouts
    TGLayoutHints *fL_canvas = new TGLayoutHints(kLHintsTop | kLHintsLeft | kLHintsExpandX |kLHintsExpandY, 5, 5, 5, 5);
 
+   //--------- create the Tab widget
+   TGTab *fTab = new TGTab(fMain, 300, 300);
+
+   //Create Tab_1
+//   TGCompositeFrame *tab_frame = fTab->AddTab("Waveforms (ch0 - ch1)");
+
+
    //Create a horizontal frame for control_panel(cpanel_canv) and canvases
-   TGHorizontalFrame *hframe_cpanel_canv = new TGHorizontalFrame(fMain,1500,900);
+   TGHorizontalFrame *hframe_cpanel_canv = new TGHorizontalFrame(fMain,w,h);
 
    //Create a vertical frame for control_panel
    TGVerticalFrame *vframe_control_panel = new TGVerticalFrame(hframe_cpanel_canv,300,900);
@@ -20,12 +29,12 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
 
    //---------------- canvases
    //Create vertical frame for 2 rows
-   TGVerticalFrame *vframe_canvases = new TGVerticalFrame(hframe_cpanel_canv,1500,900);
+   TGVerticalFrame *vframe_canvases = new TGVerticalFrame(hframe_cpanel_canv,w,h);
 
    //----
    //row 1
    //Create a horizontal frame widget with Ecanvases
-   TGHorizontalFrame *hframe_canvas_row = new TGHorizontalFrame(vframe_canvases,1500,900);
+   TGHorizontalFrame *hframe_canvas_row = new TGHorizontalFrame(vframe_canvases,w,h);
 
    // Create canvas widget
    //ch_0
@@ -46,7 +55,7 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    //----
    //row 2
    //Create a horizontal frame widget with Ecanvases
-   TGHorizontalFrame *hframe_canvas_row2 = new TGHorizontalFrame(vframe_canvases,1500,900);
+   TGHorizontalFrame *hframe_canvas_row2 = new TGHorizontalFrame(vframe_canvases,w,h);
 
    //ch_3
    fEcanvas_ch3 = new TRootEmbeddedCanvas("Ecanvas_ch3",hframe_canvas_row2,canvas_w,canvas_h);
@@ -66,11 +75,6 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    //Fill vframe_canvases frame with 2 rows
    vframe_canvases->AddFrame(hframe_canvas_row, fL_canvas);
    vframe_canvases->AddFrame(hframe_canvas_row2, fL_canvas);
-
-
-
-   //fMain->AddFrame(vframe_canvases, new TGLayoutHints(kLHintsExpandY));
-
 
 
    // Create a horizontal frame widget with buttons
