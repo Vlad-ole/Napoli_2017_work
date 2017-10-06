@@ -8,6 +8,9 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    const UInt_t canvas_w = 500;//in pixel
    const UInt_t canvas_h = 500;//in pixel
 
+   //Different layouts
+   TGLayoutHints *fL_canvas = new TGLayoutHints(kLHintsTop | kLHintsLeft | kLHintsExpandX |kLHintsExpandY, 5, 5, 5, 5);
+
    //Create a horizontal frame for control_panel(cpanel_canv) and canvases
    TGHorizontalFrame *hframe_cpanel_canv = new TGHorizontalFrame(fMain,1500,900);
 
@@ -27,15 +30,15 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    // Create canvas widget
    //ch_0
    fEcanvas = new TRootEmbeddedCanvas("Ecanvas",hframe_canvas_row,canvas_w,canvas_h);
-   hframe_canvas_row->AddFrame(fEcanvas, new TGLayoutHints(kLHintsExpandX));
+   hframe_canvas_row->AddFrame(fEcanvas, fL_canvas);
 
    //ch_1
    fEcanvas_ch1 = new TRootEmbeddedCanvas("Ecanvas_ch1",hframe_canvas_row,canvas_w,canvas_h);
-   hframe_canvas_row->AddFrame(fEcanvas_ch1, new TGLayoutHints(kLHintsExpandX));
+   hframe_canvas_row->AddFrame(fEcanvas_ch1, fL_canvas);
 
    //ch_2
    fEcanvas_ch2 = new TRootEmbeddedCanvas("Ecanvas_ch2",hframe_canvas_row,canvas_w,canvas_h);
-   hframe_canvas_row->AddFrame(fEcanvas_ch2, new TGLayoutHints(kLHintsExpandX));
+   hframe_canvas_row->AddFrame(fEcanvas_ch2, fL_canvas);
    //----
 
 
@@ -47,22 +50,22 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
 
    //ch_3
    fEcanvas_ch3 = new TRootEmbeddedCanvas("Ecanvas_ch3",hframe_canvas_row2,canvas_w,canvas_h);
-   hframe_canvas_row2->AddFrame(fEcanvas_ch3, new TGLayoutHints(kLHintsExpandX));
+   hframe_canvas_row2->AddFrame(fEcanvas_ch3, fL_canvas);
 
    //ch_4
    fEcanvas_ch4 = new TRootEmbeddedCanvas("Ecanvas_ch4",hframe_canvas_row2,canvas_w,canvas_h);
-   hframe_canvas_row2->AddFrame(fEcanvas_ch4, new TGLayoutHints(kLHintsExpandX));
+   hframe_canvas_row2->AddFrame(fEcanvas_ch4, fL_canvas);
 
    //ch_5
    fEcanvas_ch5 = new TRootEmbeddedCanvas("Ecanvas_ch5",hframe_canvas_row2,canvas_w,canvas_h);
-   hframe_canvas_row2->AddFrame(fEcanvas_ch5, new TGLayoutHints(kLHintsExpandX));
+   hframe_canvas_row2->AddFrame(fEcanvas_ch5, fL_canvas);
    //----
    //---------------- end canvases
 
 
    //Fill vframe_canvases frame with 2 rows
-   vframe_canvases->AddFrame(hframe_canvas_row, new TGLayoutHints(kLHintsExpandY));
-   vframe_canvases->AddFrame(hframe_canvas_row2, new TGLayoutHints(kLHintsExpandY));
+   vframe_canvases->AddFrame(hframe_canvas_row, fL_canvas);
+   vframe_canvases->AddFrame(hframe_canvas_row2, fL_canvas);
 
 
 
@@ -80,8 +83,8 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    vframe_control_panel->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
 
    hframe_cpanel_canv->AddFrame(vframe_control_panel, new TGLayoutHints(kLHintsExpandY));
-   hframe_cpanel_canv->AddFrame(vframe_canvases, new TGLayoutHints(kLHintsExpandY));
-   fMain->AddFrame(hframe_cpanel_canv, new TGLayoutHints(kLHintsExpandY));
+   hframe_cpanel_canv->AddFrame(vframe_canvases, fL_canvas);
+   fMain->AddFrame(hframe_cpanel_canv, fL_canvas);
 
    // Set a name to the main frame
    fMain->SetWindowName("Simple Example");

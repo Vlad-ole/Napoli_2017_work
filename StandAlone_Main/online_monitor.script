@@ -1,9 +1,5 @@
 #!/bin/bash
-# This is a comment
-#command1=$(rootcint -f mainDic.cpp -c mymainframe.h linkdef.h)
-#command2="g++ -o main mymainframe.cpp main.cpp mainDic.cpp \`root-config --cflags --glibs\`"
-#echo "This commans will be run: $command1"
-#echo "This commans will be run: $command2"
+# use this command to make script executable: chmod +x ./online_monitor.script 
 trap 'echo "# $BASH_COMMAND"' DEBUG
 rootcint -f mainDic.cpp -c mymainframe.h linkdef.h;
 g++ -o main mymainframe.cpp main.cpp mainDic.cpp `root-config --cflags --glibs`;
