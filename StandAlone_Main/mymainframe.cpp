@@ -10,26 +10,53 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    const UInt_t canvas_h = 500;//in pixel
 
 
-   //Different layouts
+   //Different LayoutHints
    TGLayoutHints *fL_canvas = new TGLayoutHints(kLHintsTop | kLHintsLeft | kLHintsExpandX |kLHintsExpandY, 5, 5, 5, 5);
+   TGLayoutHints *fL_ExpandY = new TGLayoutHints(kLHintsExpandY);
+   TGLayoutHints *fL_control_panel = new TGLayoutHints(kLHintsTop | kLHintsLeft | kLHintsExpandY, 5, 5, 5, 5);
+   TGLayoutHints *fL_fMain = new TGLayoutHints(kLHintsTop | kLHintsRight | kLHintsExpandX |kLHintsExpandY, 5, 5, 5, 5);
+
+   //hframe for control_panel and tab_frame
+   TGHorizontalFrame *hframe_control_panel_tab_frame = new TGHorizontalFrame(fMain,200,40);
+
+
+   //-------------- control_panel
+   //Create a vertical frame for control_panel
+   TGVerticalFrame *vframe_control_panel = new TGVerticalFrame(hframe_control_panel_tab_frame,300,900);
+
+   // Create a horizontal frame widget with buttons
+   TGHorizontalFrame *hframe = new TGHorizontalFrame(vframe_control_panel,200,40);
+   TGTextButton *draw = new TGTextButton(hframe,"&Draw");
+   draw->Connect("Clicked()","MyMainFrame",this,"DoDraw()");
+   hframe->AddFrame(draw, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
+   TGTextButton *exit = new TGTextButton(hframe,"&Exit","gApplication->Terminate(0)");
+   hframe->AddFrame(exit, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
+   vframe_control_panel->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
+
+//   fMain->AddFrame(vframe_control_panel, fL_control_panel);
+   //--------------end control_panel
+
+
+
+
+
 
    //--------- create the Tab widget
-   TGTab *fTab = new TGTab(fMain, 300, 300);
+   TGTab *fTab = new TGTab(hframe_control_panel_tab_frame, 300, 300);
 
    //Create Tab_1
-//   TGCompositeFrame *tab_frame = fTab->AddTab("Waveforms (ch0 - ch1)");
+   TGCompositeFrame *tab_frame = fTab->AddTab("Waveforms (ch0 - ch1)");
 
 
-   //Create a horizontal frame for control_panel(cpanel_canv) and canvases
-   TGHorizontalFrame *hframe_cpanel_canv = new TGHorizontalFrame(fMain,w,h);
+//   //Create a horizontal frame for control_panel(cpanel_canv) and canvases
+//   TGHorizontalFrame *hframe_cpanel_canv = new TGHorizontalFrame(fMain,w,h);
 
-   //Create a vertical frame for control_panel
-   TGVerticalFrame *vframe_control_panel = new TGVerticalFrame(hframe_cpanel_canv,300,900);
+
 
 
    //---------------- canvases
    //Create vertical frame for 2 rows
-   TGVerticalFrame *vframe_canvases = new TGVerticalFrame(hframe_cpanel_canv,w,h);
+   TGVerticalFrame *vframe_canvases = new TGVerticalFrame(tab_frame,w,h);
 
    //----
    //row 1
@@ -77,18 +104,11 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    vframe_canvases->AddFrame(hframe_canvas_row2, fL_canvas);
 
 
-   // Create a horizontal frame widget with buttons
-   TGHorizontalFrame *hframe = new TGHorizontalFrame(vframe_control_panel,200,40);
-   TGTextButton *draw = new TGTextButton(hframe,"&Draw");
-   draw->Connect("Clicked()","MyMainFrame",this,"DoDraw()");
-   hframe->AddFrame(draw, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
-   TGTextButton *exit = new TGTextButton(hframe,"&Exit","gApplication->Terminate(0)");
-   hframe->AddFrame(exit, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
-   vframe_control_panel->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
 
-   hframe_cpanel_canv->AddFrame(vframe_control_panel, new TGLayoutHints(kLHintsExpandY));
-   hframe_cpanel_canv->AddFrame(vframe_canvases, fL_canvas);
-   fMain->AddFrame(hframe_cpanel_canv, fL_canvas);
+   tab_frame->AddFrame(vframe_canvases, fL_canvas);
+   hframe_control_panel_tab_frame->AddFrame(vframe_control_panel, fL_control_panel);
+   hframe_control_panel_tab_frame->AddFrame(fTab, fL_canvas);
+   fMain->AddFrame(hframe_control_panel_tab_frame, fL_fMain);
 
    // Set a name to the main frame
    fMain->SetWindowName("Simple Example");
