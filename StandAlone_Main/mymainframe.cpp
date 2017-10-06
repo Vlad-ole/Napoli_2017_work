@@ -41,17 +41,14 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
 
 
 
-   //--------- create the Tab widget
+   //create the Tab widget
    TGTab *fTab = new TGTab(hframe_control_panel_tab_frame, 300, 300);
 
+
+
+   //----------------------------- Wavefoms tab
    //Create Tab_1
    TGCompositeFrame *tab_frame = fTab->AddTab("Waveforms (ch0 - ch1)");
-
-
-//   //Create a horizontal frame for control_panel(cpanel_canv) and canvases
-//   TGHorizontalFrame *hframe_cpanel_canv = new TGHorizontalFrame(fMain,w,h);
-
-
 
 
    //---------------- canvases
@@ -103,9 +100,36 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    vframe_canvases->AddFrame(hframe_canvas_row, fL_canvas);
    vframe_canvases->AddFrame(hframe_canvas_row2, fL_canvas);
 
-
-
    tab_frame->AddFrame(vframe_canvases, fL_canvas);
+   //-----------------------------end Wavefoms tab
+
+
+
+
+
+   //----------------------------- Evergy_information tab
+   //Create Tab_1
+   tab_frame = fTab->AddTab("Energy info");
+
+   TGHorizontalFrame *hframe_tab2 = new TGHorizontalFrame(tab_frame,200,40);
+
+   fEcanvas_evergy_spectrum = new TRootEmbeddedCanvas("Ecanvas_evergy_spectrum",hframe_tab2,canvas_w,canvas_h);
+   hframe_tab2->AddFrame(fEcanvas_evergy_spectrum, fL_canvas);
+
+   fEcanvas_Npe_vs_time = new TRootEmbeddedCanvas("Ecanvas_Npe_vs_time",hframe_tab2,canvas_w,canvas_h);
+   hframe_tab2->AddFrame(fEcanvas_Npe_vs_time, fL_canvas);
+
+
+   tab_frame->AddFrame(hframe_tab2, fL_canvas);
+   //----------------------------- end Evergy_information tab
+
+
+
+
+
+
+
+
    hframe_control_panel_tab_frame->AddFrame(vframe_control_panel, fL_control_panel);
    hframe_control_panel_tab_frame->AddFrame(fTab, fL_canvas);
    fMain->AddFrame(hframe_control_panel_tab_frame, fL_fMain);
@@ -171,6 +195,17 @@ void MyMainFrame::DoDraw()
     f1->Draw();
     fCanvas_ch5->Update();
 
+    //evergy_spectrum
+    TCanvas *fCanvas_evergy_spectrum = fEcanvas_evergy_spectrum->GetCanvas();
+    fCanvas_evergy_spectrum->cd();
+    f1->Draw();
+    fCanvas_evergy_spectrum->Update();
+
+    //Npe_vs_time
+    TCanvas *fCanvas_Npe_vs_time = fEcanvas_Npe_vs_time->GetCanvas();
+    fCanvas_Npe_vs_time->cd();
+    f1->Draw();
+    fCanvas_Npe_vs_time->Update();
 
 }
 
