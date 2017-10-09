@@ -25,6 +25,7 @@ class MyWorker
 public:
     MyWorker();
     void Readout_loop();
+    bool is_loop;
 };
 
 #endif // MYWORKER_H

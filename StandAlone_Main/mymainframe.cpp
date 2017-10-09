@@ -2,12 +2,20 @@
 
 MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
 {
-   // Create a main frame
+   //
+   worker = new MyWorker();
+
+
+    // Create a main frame
    fMain = new TGMainFrame(p,w,h);
 
    //set size
    const UInt_t canvas_w = 500;//in pixel
    const UInt_t canvas_h = 500;//in pixel
+
+   //colors
+   gClient->GetColorByName("yellow",pixel_t_yellow);
+   gClient->GetColorByName("red", pixel_t_red);
 
 
    //Different LayoutHints
@@ -32,8 +40,13 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    TGTextButton *exit = new TGTextButton(hframe,"&Exit","gApplication->Terminate(0)");
    hframe->AddFrame(exit, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
 
-   TGTextButton *button_start = new TGTextButton(vframe_control_panel,"&Start acquisition");
-   //button_start->Connect("Clicked()","MyMainFrame",this,"DataAcquisition()");
+   //button_start
+   button_start = new TGTextButton(vframe_control_panel,"&Start acquisition");
+   button_start->SetBackgroundColor(pixel_t_red);
+   is_start_button_activated = false;
+   button_start->Connect("Clicked()","MyMainFrame",this,"Clicked_start_button()");
+   button_start->Connect("Clicked()","MyWorker",worker,"Readout_loop()");
+
 
    vframe_control_panel->AddFrame(button_start, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
    vframe_control_panel->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
@@ -226,6 +239,22 @@ void *MyMainFrame::DataAcquisition(void *ptr)
 
 //    }
 
+}
+
+void MyMainFrame::Clicked_start_button()
+{
+    if(is_start_button_activated)
+    {
+        button_start->SetBackgroundColor(pixel_t_red);
+//        button_start->SetText("Start acquisition: inactive");
+        is_start_button_activated = false;
+    }
+    else
+    {
+        button_start->SetBackgroundColor(pixel_t_yellow);
+//        button_start->SetText("Start acquisition: active");
+        is_start_button_activated = true;
+    }
 }
 
 
