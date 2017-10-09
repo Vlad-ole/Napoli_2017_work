@@ -29,8 +29,8 @@ public:
     void DataAcquisition_Slot();
 
 private:
-    bool is_active_loop;
-    TThread *thread_h1;
+    static bool is_active_loop;
+    static TThread *thread_h1;
 
 };
 
