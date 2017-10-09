@@ -45,7 +45,7 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    button_start->SetBackgroundColor(pixel_t_red);
    is_start_button_activated = false;
    button_start->Connect("Clicked()","MyMainFrame",this,"Clicked_start_button()");
-   button_start->Connect("Clicked()","MyWorker",worker,"Readout_loop()");
+   button_start->Connect("Clicked()","MyWorker",worker,"DataAcquisition_Slot()");
 
 
    vframe_control_panel->AddFrame(button_start, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
@@ -230,16 +230,6 @@ void MyMainFrame::DoDraw()
 
 }
 
-void *MyMainFrame::DataAcquisition(void *ptr)
-{
-    std::cout << "in MyMainFrame::DataAcquisition()" << std::endl;
-
-//    while (1)
-//    {
-
-//    }
-
-}
 
 void MyMainFrame::Clicked_start_button()
 {

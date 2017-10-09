@@ -11,7 +11,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     threads.C \
-    threads_vlad.cpp
+    threads_vlad.cpp \
+    handle_as_class_member.cpp
 
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"

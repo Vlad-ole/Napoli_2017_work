@@ -16,9 +16,6 @@
 #include <TQObject.h>
 #include <RQ_OBJECT.h>
 
-//threads
-#include "TThread.h"
-
 //my
 #include "myworker.h"
 
@@ -34,7 +31,7 @@ private:
     TRootEmbeddedCanvas *fEcanvas, *fEcanvas_ch1, *fEcanvas_ch2, *fEcanvas_ch3, *fEcanvas_ch4, *fEcanvas_ch5;
     TRootEmbeddedCanvas *fEcanvas_evergy_spectrum, *fEcanvas_Npe_vs_time;
 
-    TThread *thread_h1;
+    //TThread *thread_h1;
     MyWorker *worker;
 
     TGTextButton *button_start;
@@ -51,7 +48,6 @@ public:
 
 
     void Clicked_start_button();
-    void *DataAcquisition(void *ptr);
 };
 
 #endif // MYMAINFRAME_H
