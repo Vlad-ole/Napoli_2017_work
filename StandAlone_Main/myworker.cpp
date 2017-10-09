@@ -1,7 +1,10 @@
 #include <iostream>
+
+#include "TRandom.h"
+
 #include "myworker.h"
 
-//#define DEBUG
+#define DEBUG
 
 using namespace std;
 
@@ -14,6 +17,7 @@ void* test_func(void *ptr)
 //initialize static members
 bool MyWorker::is_active_loop = false;
 TThread *MyWorker::thread_h1 = new TThread("h1", MyWorker::Readout_loop);
+vector<double> MyWorker::ch_data(0);
 
 MyWorker::MyWorker()
 {
@@ -26,22 +30,39 @@ MyWorker::MyWorker()
 
 void* MyWorker::Readout_loop(void *ptr)
 {
+#ifdef DEBUG
     cout << "you are in Readout_loop()!" << endl;
+#endif // DEBUG
+
     while(1)
     {
         if(is_active_loop)
         {
             //do some useful work
 
-
 #ifdef DEBUG
+            TRandom rnd;
+            const int n_points = 1000;
+            const int baseline = 4000;
+
+            ch_data.resize(n_points);
+
+            for (int i = 0; i < n_points; ++i)
+            {
+                double adc_value;
+                adc_value = rnd.Uniform(-10, 10) + baseline;
+                ch_data[i] = adc_value;
+                //file_out << adc_value << endl;
+            }
+
+
             thread_h1->Sleep(1);//immitate some activity
             cout << "is_active_loop ==" << is_active_loop << endl;
 #endif // DEBUG
         }
         else
         {
-            //Wait permisstion to read data
+            //Wait permission to read data
             //well, it is not the best solution, but it works. Later I will realise this using signal/slot
             thread_h1->Sleep(1);
 #ifdef DEBUG
@@ -55,7 +76,10 @@ void* MyWorker::Readout_loop(void *ptr)
 
 void MyWorker::DataAcquisition_Slot()
 {
+#ifdef DEBUG
     cout << "you are in DataAcquisition_Slot()!" << endl;
+#endif // DEBUG
+
     if(is_active_loop)
     {
         is_active_loop = false;

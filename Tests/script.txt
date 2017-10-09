@@ -1,0 +1,6 @@
+#!/bin/bash
+# use this command to make script executable: chmod +x ./script.txt
+trap 'echo "# $BASH_COMMAND"' DEBUG
+rootcint -f threads_read_data_v2Dic.cpp -c threads_read_data_v2.h linkdef.h;
+g++ -o threads_read_data_v2 threads_read_data_v2.cpp threads_read_data_v2Dic.cpp `root-config --cflags --glibs`;
+./threads_read_data_v2

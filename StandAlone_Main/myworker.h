@@ -1,6 +1,12 @@
 #ifndef MYWORKER_H
 #define MYWORKER_H
 
+
+//c++
+#include <iostream>
+#include <vector>
+
+
 //root cern general
 #include <TApplication.h>
 #include <TCanvas.h>
@@ -31,7 +37,7 @@ public:
 private:
     static bool is_active_loop;
     static TThread *thread_h1;
-
+    static std::vector<double> ch_data;
 };
 
 #endif // MYWORKER_H

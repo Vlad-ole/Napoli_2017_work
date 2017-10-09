@@ -3,23 +3,15 @@ QT -= gui
 
 CONFIG += c++11
 
-TARGET = Tests
+TARGET = Test_GUI_Threads
 CONFIG += console
 CONFIG -= app_bundle
 
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    threads.C \
-    threads_vlad.cpp \
-    handle_as_class_member.cpp \
-    signal_slot_vector.cpp \
-    signal_slot_array.cpp \
-    signal_slot_vector_no_std.cpp \
-    signal_slot_int.cpp \
-    threads_read_data.cpp \
-    signal_slot_vector_bertrand.cpp
-
+    mymainframe.cpp \
+    worker.cpp
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
 
@@ -104,6 +96,12 @@ LIBS += -L"/home/darkside/Vlad_Programs/root/lib" \
  -lX3d \
  -lXMLIO
 
-HEADERS +=
+HEADERS += \
+    linkdef.h \
+    threads_read_data_v2.h \
+    worker.h \
+    mymainframe.h \
+    linkdef.h
 
-DISTFILES +=
+DISTFILES += \
+    script.txt
