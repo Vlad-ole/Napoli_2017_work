@@ -3,16 +3,16 @@ QT -= gui
 
 CONFIG += c++11
 
-TARGET = StandAlone_Main
+TARGET = Tests
 CONFIG += console
 CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += \
-    mymainframe.cpp \
-    main.cpp \
-    myworker.cpp
+SOURCES += main.cpp \
+    threads.C \
+    threads_vlad.cpp
+
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
 
@@ -96,9 +96,3 @@ LIBS += -L"/home/darkside/Vlad_Programs/root/lib" \
  -lVMC \
  -lX3d \
  -lXMLIO
-
-HEADERS += \
-    mymainframe.h \
-    linkdef.h \
-    myworker.h
-

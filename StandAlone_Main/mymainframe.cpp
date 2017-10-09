@@ -33,7 +33,7 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    hframe->AddFrame(exit, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
 
    TGTextButton *button_start = new TGTextButton(vframe_control_panel,"&Start acquisition");
-   button_start->Connect("Clicked()","MyMainFrame",this,"DataAcquisition()");
+   //button_start->Connect("Clicked()","MyMainFrame",this,"DataAcquisition()");
 
    vframe_control_panel->AddFrame(button_start, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
    vframe_control_panel->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
@@ -148,6 +148,11 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
 
    // Map main frame
    fMain->MapWindow();
+
+
+   //work with threads
+   //thread_h1 = new TThread("thread_h1", DataAcquisition, (void*) 1);
+
 }
 
 void MyMainFrame::DoDraw()
@@ -212,7 +217,7 @@ void MyMainFrame::DoDraw()
 
 }
 
-void MyMainFrame::DataAcquisition()
+void *MyMainFrame::DataAcquisition(void *ptr)
 {
     std::cout << "in MyMainFrame::DataAcquisition()" << std::endl;
 

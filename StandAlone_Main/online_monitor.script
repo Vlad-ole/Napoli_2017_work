@@ -1,6 +1,8 @@
 #!/bin/bash
 # use this command to make script executable: chmod +x ./online_monitor.script 
 trap 'echo "# $BASH_COMMAND"' DEBUG
-rootcint -f mainDic.cpp -c mymainframe.h linkdef.h;
-g++ -o main mymainframe.cpp main.cpp mainDic.cpp `root-config --cflags --glibs`;
+#rootcint -f mainDic.cpp -c mymainframe.h linkdef.h;
+#g++ -o main mymainframe.cpp main.cpp mainDic.cpp `root-config --cflags --glibs`;
+rootcint -f mainDic.cpp -c mymainframe.h myworker.h linkdef.h;
+g++ -o main mymainframe.cpp myworker.cpp main.cpp mainDic.cpp `root-config --cflags --glibs`;
 ./main

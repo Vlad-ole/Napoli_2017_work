@@ -16,6 +16,12 @@
 #include <TQObject.h>
 #include <RQ_OBJECT.h>
 
+//threads
+#include "TThread.h"
+
+//my
+#include "myworker.h"
+
 
 class TGWindow;
 class TGMainFrame;
@@ -27,12 +33,13 @@ private:
     TGMainFrame *fMain;
     TRootEmbeddedCanvas *fEcanvas, *fEcanvas_ch1, *fEcanvas_ch2, *fEcanvas_ch3, *fEcanvas_ch4, *fEcanvas_ch5;
     TRootEmbeddedCanvas *fEcanvas_evergy_spectrum, *fEcanvas_Npe_vs_time;
+    TThread *thread_h1;
 public:
     MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h);
     virtual
     ~MyMainFrame();
     void DoDraw();
-    void DataAcquisition();
+    void *DataAcquisition(void *ptr);
 };
 
 #endif // MYMAINFRAME_H

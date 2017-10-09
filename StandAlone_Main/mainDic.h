@@ -32,6 +32,7 @@ extern void G__set_cpp_environmentmainDic();
 #include "TObject.h"
 #include "TMemberInspector.h"
 #include "mymainframe.h"
+#include "myworker.h"
 #include <algorithm>
 namespace std { }
 using namespace std;
@@ -39,6 +40,7 @@ using namespace std;
 #ifndef G__MEMFUNCBODY
 #endif
 
+extern G__linked_taginfo G__mainDicLN_vectorlEunsignedsPintcOallocatorlEunsignedsPintgRsPgR;
 extern G__linked_taginfo G__mainDicLN_vectorlEROOTcLcLTSchemaHelpercOallocatorlEROOTcLcLTSchemaHelpergRsPgR;
 extern G__linked_taginfo G__mainDicLN_reverse_iteratorlEvectorlEROOTcLcLTSchemaHelpercOallocatorlEROOTcLcLTSchemaHelpergRsPgRcLcLiteratorgR;
 extern G__linked_taginfo G__mainDicLN_TList;
@@ -48,10 +50,14 @@ extern G__linked_taginfo G__mainDicLN_TQObjSender;
 extern G__linked_taginfo G__mainDicLN_pairlEunsignedsPintcOintgR;
 extern G__linked_taginfo G__mainDicLN_vectorlEpairlEunsignedsPintcOintgRcOallocatorlEpairlEunsignedsPintcOintgRsPgRsPgR;
 extern G__linked_taginfo G__mainDicLN_reverse_iteratorlEvectorlEpairlEunsignedsPintcOintgRcOallocatorlEpairlEunsignedsPintcOintgRsPgRsPgRcLcLiteratorgR;
+extern G__linked_taginfo G__mainDicLN_TThread;
 extern G__linked_taginfo G__mainDicLN_iteratorlEbidirectional_iterator_tagcOTObjectmUcOlongcOconstsPTObjectmUmUcOconstsPTObjectmUaNgR;
 extern G__linked_taginfo G__mainDicLN_TGWindow;
 extern G__linked_taginfo G__mainDicLN_TGMainFrame;
 extern G__linked_taginfo G__mainDicLN_TRootEmbeddedCanvas;
+extern G__linked_taginfo G__mainDicLN_vectorlETStringcOallocatorlETStringgRsPgR;
+extern G__linked_taginfo G__mainDicLN_reverse_iteratorlEvectorlETStringcOallocatorlETStringgRsPgRcLcLiteratorgR;
+extern G__linked_taginfo G__mainDicLN_MyWorker;
 extern G__linked_taginfo G__mainDicLN_MyMainFrame;
 
 /* STUB derived class for protected member access */
