@@ -8,7 +8,7 @@ class MyMainFrame
     RQ_OBJECT("MyMainFrame")
 public:
     MyMainFrame();
-    void Draw_Graphs();
+    void Draw_Graphs(Long_t cnt);
 private:
     Long_t counter;
 };

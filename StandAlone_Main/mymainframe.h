@@ -15,6 +15,8 @@
 #include "TGTab.h"
 #include <TQObject.h>
 #include <RQ_OBJECT.h>
+#include "TGNumberEntry.h"
+#include "TGLabel.h"
 
 //my
 #include "myworker.h"

@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     signal_slot_vector_no_std.cpp \
     signal_slot_int.cpp \
     threads_read_data.cpp \
-    signal_slot_vector_bertrand.cpp
+    signal_slot_vector_bertrand.cpp \
+    numberentry.C
 
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"

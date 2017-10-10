@@ -1,3 +1,5 @@
+
+
 #include "mymainframe.h"
 
 MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
@@ -47,8 +49,22 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    button_start->Connect("Clicked()","MyMainFrame",this,"Clicked_start_button()");
    button_start->Connect("Clicked()","MyWorker",worker,"DataAcquisition_Slot()");
 
+   //set update_time
+   TGHorizontalFrame *hframe_update_time = new TGHorizontalFrame(vframe_control_panel,200,40);
+   TGNumberEntry *NEntr_update_time = new TGNumberEntry(hframe_update_time, 1000, 6, 1,
+            TGNumberFormat::kNESInteger,   //style
+            TGNumberFormat::kNEAPositive,   //input value filter
+            TGNumberFormat::kNELLimitMinMax, //specify limits
+            100,5000);                         //limit values
+
+   TGLabel *label_update_time = new TGLabel(hframe_update_time, "Set update time [ms]");
+   hframe_update_time->AddFrame(NEntr_update_time, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
+   hframe_update_time->AddFrame(label_update_time, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
+
+
 
    vframe_control_panel->AddFrame(button_start, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
+   vframe_control_panel->AddFrame(hframe_update_time, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
    vframe_control_panel->AddFrame(hframe, new TGLayoutHints(kLHintsCenterX,2,2,2,2));
    //--------------end control_panel
 

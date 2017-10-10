@@ -13,19 +13,36 @@
 #include <TQObject.h>
 #include <RQ_OBJECT.h>
 
+//my
+//class Worker
+//{
+//   RQ_OBJECT("Worker")
+//private:
+//   static std::vector<Int_t> fValue_vec;
+//   static Long_t counter;
+
+//   static TThread *h1;
+//public:
+//   Worker();
+//   void  SendValue(Long_t); // *SIGNAL*
+
+//   static void *handle(void *ptr);
+//};
+
+//Bertrand
 class Worker
 {
    RQ_OBJECT("Worker")
 private:
-   static std::vector<Int_t> fValue_vec;
-   static Long_t counter;
+   std::vector<Int_t> fValue_vec;
+   Long_t counter;
 
-   static TThread *h1;
+   TThread *h1;
 public:
    Worker();
-   void  SendValue(Long_t); // *SIGNAL*
+   void SendValue(Long_t); // *SIGNAL*
 
-   static void *handle(void *ptr);
+   void *handle(void *ptr);
 };
 
 #endif // WORKER_H

@@ -5,4 +5,4 @@ trap 'echo "# $BASH_COMMAND"' DEBUG
 #g++ -o main mymainframe.cpp main.cpp mainDic.cpp `root-config --cflags --glibs`;
 rootcint -f mainDic.cpp -c mymainframe.h myworker.h linkdef.h;
 g++ -o main mymainframe.cpp myworker.cpp main.cpp mainDic.cpp `root-config --cflags --glibs`;
-./main
+#./main

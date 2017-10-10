@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     Worker *worker = new Worker();
     MyMainFrame *my_mframe = new MyMainFrame();
 
-
+    worker->Connect("SendValue(Long_t)","MyMainFrame",my_mframe,"Draw_Graphs(Long_t)");
 
     theApp.Run();
     return 0;
