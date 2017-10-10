@@ -46,7 +46,7 @@ public:
     MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h);
     virtual
     ~MyMainFrame();
-    void DoDraw();
+    void DoDraw(DataStr*);
 
 
     void Clicked_start_button();

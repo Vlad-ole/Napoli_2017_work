@@ -1,17 +1,14 @@
 #ifndef MYMAINFRAME_H
 #define MYMAINFRAME_H
 
-#include "worker.h"
+#include "myworker.h"
 
 class MyMainFrame
 {
     RQ_OBJECT("MyMainFrame")
 public:
     MyMainFrame();
-    //void Draw_Graphs(Long_t cnt);
-//    void Draw_Graphs(std::vector<Int_t>* data);
-    //void Draw_Graphs(std::vector<std::vector<Int_t> >* data);
-    void Draw_Graphs(DataStr* data_str);
+    void DoDraw(DataStr* data_str);
 private:
     Long_t counter;
 };

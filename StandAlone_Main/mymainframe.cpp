@@ -5,10 +5,11 @@
 MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
 {
    //
-   worker = new MyWorker();
+   //worker = new MyWorker();
+   //worker->Connect("SendDataStruct(DataStr*)","MyMainFrame",this,"DoDraw(DataStr*)");
 
 
-    // Create a main frame
+   // Create a main frame
    fMain = new TGMainFrame(p,w,h);
 
    //set size
@@ -37,7 +38,7 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    // Create a horizontal frame widget with buttons
    TGHorizontalFrame *hframe = new TGHorizontalFrame(vframe_control_panel,200,40);
    TGTextButton *draw = new TGTextButton(hframe,"&Draw");
-   draw->Connect("Clicked()","MyMainFrame",this,"DoDraw()");
+   //draw->Connect("Clicked()","MyMainFrame",this,"DoDraw()");
    hframe->AddFrame(draw, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
    TGTextButton *exit = new TGTextButton(hframe,"&Exit","gApplication->Terminate(0)");
    hframe->AddFrame(exit, new TGLayoutHints(kLHintsCenterX,5,5,3,4));
@@ -47,7 +48,7 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
    button_start->SetBackgroundColor(pixel_t_red);
    is_start_button_activated = false;
    button_start->Connect("Clicked()","MyMainFrame",this,"Clicked_start_button()");
-   button_start->Connect("Clicked()","MyWorker",worker,"DataAcquisition_Slot()");
+   //button_start->Connect("Clicked()","MyWorker",worker,"DataAcquisition_Slot()");
 
    //set update_time
    TGHorizontalFrame *hframe_update_time = new TGHorizontalFrame(vframe_control_panel,200,40);
@@ -184,17 +185,12 @@ MyMainFrame::MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h)
 
 }
 
-void MyMainFrame::DoDraw()
+void MyMainFrame::DoDraw(DataStr* data_str)
 {
 
-//   // Draws function graphics in randomly chosen interval
+    // Draws function graphics in randomly chosen interval
     TF1 *f1 = new TF1("f1","sin(x)/x",0,gRandom->Rndm()*10);
     f1->SetLineWidth(3);
-//orginal
-//   f1->Draw();
-//   TCanvas *fCanvas = fEcanvas->GetCanvas();
-//   fCanvas->cd();
-//   fCanvas->Update();
 
     //ch_0
     TCanvas *fCanvas = fEcanvas->GetCanvas();
@@ -249,6 +245,7 @@ void MyMainFrame::DoDraw()
 
 void MyMainFrame::Clicked_start_button()
 {
+
     if(is_start_button_activated)
     {
         button_start->SetBackgroundColor(pixel_t_red);

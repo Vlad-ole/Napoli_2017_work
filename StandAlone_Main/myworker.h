@@ -25,6 +25,12 @@
 //threads
 #include "TThread.h"
 
+struct DataStr
+{
+    Long_t counter;
+//    std::vector<std::vector<Double_t> > data_vv;
+};
+
 class MyWorker
 {
     RQ_OBJECT("MyWorker")
@@ -33,11 +39,14 @@ public:
 
     void *Readout_loop(void *ptr);
     void DataAcquisition_Slot();
+    void SendDataStruct(DataStr*); // *SIGNAL*
 
 private:
     bool is_active_loop;
     TThread *thread_h1;
-    std::vector<double> ch_data;
+    Long_t global_counter;
+    //std::vector<double> ch_data;
+
 };
 
 #endif // MYWORKER_H

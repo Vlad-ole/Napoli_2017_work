@@ -11,7 +11,7 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     mymainframe.cpp \
-    worker.cpp
+    myworker.cpp
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
 
@@ -99,9 +99,9 @@ LIBS += -L"/home/darkside/Vlad_Programs/root/lib" \
 HEADERS += \
     linkdef.h \
     threads_read_data_v2.h \
-    worker.h \
     mymainframe.h \
-    linkdef.h
+    linkdef.h \
+    myworker.h
 
 DISTFILES += \
     script.txt

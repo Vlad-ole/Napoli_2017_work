@@ -32,7 +32,7 @@ extern void G__set_cpp_environmentmainDic();
 #include "TObject.h"
 #include "TMemberInspector.h"
 #include "mymainframe.h"
-#include "worker.h"
+#include "myworker.h"
 #include <algorithm>
 namespace std { }
 using namespace std;
@@ -59,7 +59,7 @@ extern G__linked_taginfo G__mainDicLN_vectorlEintcOallocatorlEintgRsPgR;
 extern G__linked_taginfo G__mainDicLN_reverse_iteratorlEvectorlEintcOallocatorlEintgRsPgRcLcLiteratorgR;
 extern G__linked_taginfo G__mainDicLN_vectorlEvectorlEintcOallocatorlEintgRsPgRcOallocatorlEvectorlEintcOallocatorlEintgRsPgRsPgRsPgR;
 extern G__linked_taginfo G__mainDicLN_reverse_iteratorlEvectorlEvectorlEintcOallocatorlEintgRsPgRcOallocatorlEvectorlEintcOallocatorlEintgRsPgRsPgRsPgRcLcLiteratorgR;
-extern G__linked_taginfo G__mainDicLN_Worker;
+extern G__linked_taginfo G__mainDicLN_MyWorker;
 extern G__linked_taginfo G__mainDicLN_MyMainFrame;
 
 /* STUB derived class for protected member access */
