@@ -14,10 +14,10 @@ void* test_func(void *ptr)
     return 0;
 }
 
-//initialize static members
-bool MyWorker::is_active_loop = false;
-TThread *MyWorker::thread_h1 = new TThread("h1", MyWorker::Readout_loop);
-vector<double> MyWorker::ch_data(0);
+////initialize static members
+//bool MyWorker::is_active_loop = false;
+//TThread *MyWorker::thread_h1 = new TThread("h1", MyWorker::Readout_loop);
+//vector<double> MyWorker::ch_data(0);
 
 MyWorker::MyWorker()
 {
@@ -25,6 +25,11 @@ MyWorker::MyWorker()
     //thread_h1 = new TThread("h1", test_func, (void*) 1);
     //thread_h1 = new TThread("h1", (void(*)(void *))&Readout_loop,(void*) this);
     //thread_h1 = new TThread("h1", MyWorker::Readout_loop, (void*) this);
+
+    is_active_loop = false;
+    thread_h1 = new TThread("h1", (void(*)(void *))&MyWorker::Readout_loop, (void*) this);
+    ch_data.resize(0);
+
     thread_h1->Run();
 }
 

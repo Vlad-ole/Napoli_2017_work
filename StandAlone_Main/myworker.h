@@ -31,13 +31,13 @@ class MyWorker
 public:
     MyWorker();
 
-    static void *Readout_loop(void *ptr);
+    void *Readout_loop(void *ptr);
     void DataAcquisition_Slot();
 
 private:
-    static bool is_active_loop;
-    static TThread *thread_h1;
-    static std::vector<double> ch_data;
+    bool is_active_loop;
+    TThread *thread_h1;
+    std::vector<double> ch_data;
 };
 
 #endif // MYWORKER_H
