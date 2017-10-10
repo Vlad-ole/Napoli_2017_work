@@ -19,7 +19,9 @@ int main(int argc, char **argv)
 
     //worker->Connect("SendValue(Long_t)","MyMainFrame",my_mframe,"Draw_Graphs(Long_t)");//works
     //worker->Connect("SetValue(std::vector<Int_t>*)","MyMainFrame",my_mframe,"Draw_Graphs(std::vector<Int_t>*)");//works
-    worker->Connect("SetValueVV(std::vector<std::vector<Int_t> >*)","MyMainFrame",my_mframe,"Draw_Graphs(std::vector<std::vector<Int_t> >*)"); // Error in <TQObject::CheckConnectArgs>: signal Worker::SetValue(std::vector<std::vector<Int_t>>*) does not exist
+    //worker->Connect("SetValueVV(std::vector<std::vector<Int_t> >*)","MyMainFrame",my_mframe,"Draw_Graphs(std::vector<std::vector<Int_t> >*)");//works
+    worker->Connect("SetStruct(DataStr*)","MyMainFrame",my_mframe,"Draw_Graphs(DataStr*)");//
+
 
     theApp.Run();
     return 0;

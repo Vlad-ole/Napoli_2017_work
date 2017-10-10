@@ -10,8 +10,8 @@ public:
     MyMainFrame();
     //void Draw_Graphs(Long_t cnt);
 //    void Draw_Graphs(std::vector<Int_t>* data);
-    void Draw_Graphs(std::vector<std::vector<Int_t> >* data);
-    //void Draw_Graphs(std::vector<std::vector<Int_t>* >* data);
+    //void Draw_Graphs(std::vector<std::vector<Int_t> >* data);
+    void Draw_Graphs(DataStr* data_str);
 private:
     Long_t counter;
 };

@@ -69,20 +69,15 @@ Worker::Worker() : counter(0), h1(0)
 //    Emit("SetValue(std::vector<Int_t>*)", (Long_t)v);
 //}
 
-void Worker::SetValueVV(std::vector<std::vector<Int_t> >* vv)
+//void Worker::SetValueVV(std::vector<std::vector<Int_t> >* vv)
+//{
+//    Emit("SetValueVV(std::vector<std::vector<Int_t> >*)", (Long_t)vv);
+//}
+
+void Worker::SetStruct(DataStr* v)
 {
-    Emit("SetValueVV(std::vector<std::vector<Int_t> >*)", (Long_t)vv);
+    Emit("SetStruct(DataStr*)", (Long_t)v);
 }
-
-//void Worker::SetValueVV_pp(std::vector<std::vector<Int_t>* >* vv)
-//{
-//    Emit("SetValue(std::vector<std::vector<Int_t>* >*)", (Long_t)vv);
-//}
-
-//void Worker::SetStruct(DataStr*)
-//{
-//    Emit("SetValue(std::vector<Int_t>*)", (Long_t)v);
-//}
 
 void *Worker::handle(void *ptr)
 {
@@ -107,18 +102,28 @@ void *Worker::handle(void *ptr)
       //      vec[1] = counter + 20;
       //      vec[2] = counter + 30;
 
+      DataStr data_str;
+      data_str.cnt = counter;
+      data_str.data_vv.resize(2);
+      data_str.data_vv[0].resize(1);
+      data_str.data_vv[1].resize(1);
 
-      vec_vv[0][0] = counter;
-      vec_vv[1][0] = counter + 10;
-      SetValueVV(&vec_vv);
+      data_str.data_vv[0][0] = counter;
+      data_str.data_vv[1][0] = counter + 10;
 
-        //SetValueVV_pp(&vec_vv);
+      SetStruct(&data_str);
+
+//      vec_vv[0][0] = counter;
+//      vec_vv[1][0] = counter + 10;
+//      SetValueVV(&vec_vv);
+
+      //SetValueVV_pp(&vec_vv);
       //vec_vv[0]->at(0) = counter;
 
 
       //printf("You are in slave Thread: at event %d values are: %d, %d, %d \n", counter, vec[0], vec[1], vec[2]);
-      printf("You are in slave Thread: at event %d values are: %d \n", vec_vv[0][0], vec_vv[1][0]);
-      //printf("You are in slave Thread: at event %d values are: %d \n", vec_vv[0]->at(0), vec_vv[1]->at(0));
+      //printf("You are in slave Thread: at event %d values are: %d \n", vec_vv[0][0], vec_vv[1][0]);
+      printf("You are in slave Thread: at event %d values are %d, %d \n", data_str.cnt, data_str.data_vv[0][0], data_str.data_vv[1][0]);
 
 
       counter++;

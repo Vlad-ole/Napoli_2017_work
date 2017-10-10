@@ -33,6 +33,7 @@
 struct DataStr
 {
    Long_t cnt;
+   std::vector<std::vector<Int_t> > data_vv;
 };
 
 //Bertrand
@@ -49,9 +50,8 @@ public:
    Worker();
 //   void SendValue(Long_t); // *SIGNAL*
 //   void SetValue(std::vector<Int_t>*); // *SIGNAL*
-   void SetValueVV(std::vector<std::vector<Int_t> >*); // *SIGNAL*
-//   void SetValueVV_pp(std::vector<std::vector<Int_t>* >*); // *SIGNAL*
-//   void SetStruct(DataStr*); // *SIGNAL*
+//   void SetValueVV(std::vector<std::vector<Int_t> >*); // *SIGNAL*
+   void SetStruct(DataStr*); // *SIGNAL*
 
    void *handle(void *ptr);
 };
