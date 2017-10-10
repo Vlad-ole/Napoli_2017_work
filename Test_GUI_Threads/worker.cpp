@@ -54,22 +54,73 @@ Worker::Worker() : counter(0), h1(0)
    h1->Run();
 }
 
-void  Worker::SendValue(Long_t cnt)
+//void  Worker::SendValue(Long_t cnt)
+//{
+//   Emit("SendValue(Long_t)",cnt);
+//}
+
+//void Worker::SetValue(std::vector<Int_t> *v)
+//{
+//    for (int i = 0; i < fValue_vec.size(); ++i)
+//    {
+//        fValue_vec[i] = v->at(i);
+//    }
+
+//    Emit("SetValue(std::vector<Int_t>*)", (Long_t)v);
+//}
+
+void Worker::SetValueVV(std::vector<std::vector<Int_t> >* vv)
 {
-   Emit("SendValue(Long_t)",cnt);
+    Emit("SetValueVV(std::vector<std::vector<Int_t> >*)", (Long_t)vv);
 }
+
+//void Worker::SetValueVV_pp(std::vector<std::vector<Int_t>* >* vv)
+//{
+//    Emit("SetValue(std::vector<std::vector<Int_t>* >*)", (Long_t)vv);
+//}
+
+//void Worker::SetStruct(DataStr*)
+//{
+//    Emit("SetValue(std::vector<Int_t>*)", (Long_t)v);
+//}
 
 void *Worker::handle(void *ptr)
 {
-   std::vector<Int_t> vec(3);
+   //std::vector<Int_t> vec(3);
+
+    std::vector<std::vector<Int_t> > vec_vv(2);
+    vec_vv[0].resize(1);
+    vec_vv[1].resize(1);
+
+    //std::vector<std::vector<Int_t>* > vec_vv(2);
+    //vec_vv[0]->resize(1);
+    //vec_vv[1]->resize(1);
+
    while(1) {
       //some work to get data (read board or file)
       gSystem->Sleep(1000);//dummy
-      vec[0] = counter + 10;
-      vec[1] = counter + 20;
-      vec[2] = counter + 30;
-      SendValue(counter);
-      printf("You are in slave Thread: at event %d values are is: %d, %d, %d \n", counter, vec[0], vec[1], vec[2]);
+
+      //SendValue(counter);
+
+      //      SetValueVV(&vec_vv);
+      //      vec[0] = counter + 10;
+      //      vec[1] = counter + 20;
+      //      vec[2] = counter + 30;
+
+
+      vec_vv[0][0] = counter;
+      vec_vv[1][0] = counter + 10;
+      SetValueVV(&vec_vv);
+
+        //SetValueVV_pp(&vec_vv);
+      //vec_vv[0]->at(0) = counter;
+
+
+      //printf("You are in slave Thread: at event %d values are: %d, %d, %d \n", counter, vec[0], vec[1], vec[2]);
+      printf("You are in slave Thread: at event %d values are: %d \n", vec_vv[0][0], vec_vv[1][0]);
+      //printf("You are in slave Thread: at event %d values are: %d \n", vec_vv[0]->at(0), vec_vv[1]->at(0));
+
+
       counter++;
    }
    return 0;

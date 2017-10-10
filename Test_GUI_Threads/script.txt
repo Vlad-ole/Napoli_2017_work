@@ -3,4 +3,4 @@
 trap 'echo "# $BASH_COMMAND"' DEBUG
 rootcint -f mainDic.cpp -c mymainframe.h worker.h linkdef.h;
 g++ -o main mymainframe.cpp worker.cpp main.cpp mainDic.cpp `root-config --cflags --glibs`;
-./main
+#./main

@@ -29,18 +29,29 @@
 //   static void *handle(void *ptr);
 //};
 
+
+struct DataStr
+{
+   Long_t cnt;
+};
+
 //Bertrand
 class Worker
 {
    RQ_OBJECT("Worker")
 private:
    std::vector<Int_t> fValue_vec;
+   std::vector< std::vector<Int_t> > fValue_VV;
    Long_t counter;
 
    TThread *h1;
 public:
    Worker();
-   void SendValue(Long_t); // *SIGNAL*
+//   void SendValue(Long_t); // *SIGNAL*
+//   void SetValue(std::vector<Int_t>*); // *SIGNAL*
+   void SetValueVV(std::vector<std::vector<Int_t> >*); // *SIGNAL*
+//   void SetValueVV_pp(std::vector<std::vector<Int_t>* >*); // *SIGNAL*
+//   void SetStruct(DataStr*); // *SIGNAL*
 
    void *handle(void *ptr);
 };
