@@ -24,10 +24,7 @@ class MyWorker
 {
    RQ_OBJECT("MyWorker")
 private:
-   std::vector<Int_t> fValue_vec;
-   std::vector< std::vector<Int_t> > fValue_VV;
    Long_t counter;
-
    TThread *h1;
 public:
    MyWorker();

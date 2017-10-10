@@ -15,7 +15,8 @@ int main(int argc, char **argv)
     TApplication theApp("App",&argc,argv);
 
     MyWorker *worker = new MyWorker();
-    MyMainFrame *my_mframe = new MyMainFrame();
+    //MyMainFrame *my_mframe = new MyMainFrame();
+    MyMainFrame *my_mframe = new MyMainFrame(gClient->GetRoot(),1500,900);
 
     worker->Connect("SendDataStruct(DataStr*)","MyMainFrame",my_mframe,"DoDraw(DataStr*)");//
 

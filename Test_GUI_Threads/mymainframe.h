@@ -7,8 +7,14 @@ class MyMainFrame
 {
     RQ_OBJECT("MyMainFrame")
 public:
-    MyMainFrame();
+    //MyMainFrame();
     void DoDraw(DataStr* data_str);
+
+    //added
+    MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h);
+    TGMainFrame *fMain;
+    virtual ~MyMainFrame();
+
 private:
     Long_t counter;
 };

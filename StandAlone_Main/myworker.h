@@ -25,10 +25,16 @@
 //threads
 #include "TThread.h"
 
+//struct DataStr
+//{
+//    Long_t counter;
+////    std::vector<std::vector<Double_t> > data_vv;
+//};
+
 struct DataStr
 {
-    Long_t counter;
-//    std::vector<std::vector<Double_t> > data_vv;
+   Long_t cnt;
+   std::vector<std::vector<Int_t> > data_vv;
 };
 
 class MyWorker
@@ -38,14 +44,13 @@ public:
     MyWorker();
 
     void *Readout_loop(void *ptr);
-    void DataAcquisition_Slot();
+    //void DataAcquisition_Slot();
     void SendDataStruct(DataStr*); // *SIGNAL*
 
 private:
-    bool is_active_loop;
+    //bool is_active_loop;
     TThread *thread_h1;
-    Long_t global_counter;
-    //std::vector<double> ch_data;
+    Long_t counter;
 
 };
 
