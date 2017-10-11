@@ -30,8 +30,12 @@ void *MyWorker::Readout_loop(void *ptr)
       data_str.data_vv[0][0] = counter;
       data_str.data_vv[1][0] = counter + 10;
 
+      //for linux
+      pid_t this_id = syscall(__NR_gettid);
+      //pid_t this_id = gettid();
+
       SendDataStruct(&data_str);
-      printf("You are in slave Thread: at event %d values are%d, %d \n", data_str.cnt, data_str.data_vv[0][0], data_str.data_vv[1][0]);
+      printf("You are in slave Thread(%d): at event %d values are: %d, %d \n", this_id, data_str.cnt, data_str.data_vv[0][0], data_str.data_vv[1][0]);
 
       counter++;
    }

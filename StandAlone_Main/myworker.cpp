@@ -24,7 +24,7 @@ void *MyWorker::Readout_loop(void *ptr)
    while(1)
    {
       //some work to get data (read board or file)
-      gSystem->Sleep(1000);//dummy
+
 
       DataStr data_str;
       data_str.cnt = counter;
@@ -36,9 +36,10 @@ void *MyWorker::Readout_loop(void *ptr)
       data_str.data_vv[1][0] = counter + 10;
 
       SendDataStruct(&data_str);
-      printf("You are in slave Thread: at event %d values are%d, %d \n", data_str.cnt, data_str.data_vv[0][0], data_str.data_vv[1][0]);
-
+      printf("You are in slave Thread: at event %d values are: %d, %d \n", data_str.cnt, data_str.data_vv[0][0], data_str.data_vv[1][0]);
       counter++;
+
+      gSystem->Sleep(1000);//dummy
    }
    return 0;
 }

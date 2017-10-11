@@ -1,5 +1,10 @@
-#ifndef MyWorker_H
-#define MyWorker_H
+#ifndef WORKER_H
+#define WORKER_H
+
+//root cern general
+#include "TF1.h"
+#include "TGraph.h"
+#include <TRandom.h>
 
 #include "TThread.h"
 #include <Riostream.h>
@@ -17,23 +22,25 @@
 #include <sys/types.h>
 #include <sys/syscall.h>
 
+class MyMainFrame;//forward declaration
+
 struct DataStr
 {
    Long_t cnt;
-   std::vector<std::vector<Int_t> > data_vv;
+   std::vector<std::vector<Float_t> > data_vv;
 };
 
-//Bertrand
-class MyWorker
+
+class Worker
 {
-   RQ_OBJECT("MyWorker")
+   RQ_OBJECT("Worker")
+public:
+   Worker();
+//   void SendValue(Long_t); // *SIGNAL*
+   void *handle(void *ptr);
 private:
    Long_t counter;
-   TThread *h1;
-public:
-   MyWorker();
-   void SendDataStruct(DataStr*); // *SIGNAL*
-   void *Readout_loop(void *ptr);
+
 };
 
-#endif // MyWorker_H
+#endif // WORKER_H
