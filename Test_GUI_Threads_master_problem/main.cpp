@@ -22,10 +22,3 @@ int main(int argc, char **argv)
     return 0;
 }
 
-
-//    /tmp/ccQF6kxU.o: In function `MyMainFrame::MyMainFrame()':
-//    mymainframe.cpp:(.text+0x16): undefined reference to `vtable for MyMainFrame'
-//    /tmp/ccPNo7e2.o: In function `ROOTDict::GenerateInitInstanceLocal(MyMainFrame const*)':
-//    mainDic.cpp:(.text+0x64): undefined reference to `typeinfo for MyMainFrame'
-//    mainDic.cpp:(.text+0xf3): undefined reference to `typeinfo for MyMainFrame'
-//    collect2: error: ld returned 1 exit status

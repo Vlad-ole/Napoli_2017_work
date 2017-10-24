@@ -12,7 +12,6 @@ TEMPLATE = app
 SOURCES += main.cpp \
     example.C \
     GIU_Builder.C \
-    tmp.cpp \
     mymainframe.cpp
 
 

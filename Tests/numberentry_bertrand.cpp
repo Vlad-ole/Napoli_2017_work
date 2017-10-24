@@ -50,8 +50,8 @@ MyMainFrame::MyMainFrame(const TGWindow *p, UInt_t w, UInt_t h)
                                                TGNumberFormat::kNELLimitMinMax,
                                                0, 99999);
    fNumber->Connect("ValueSet(Long_t)", "MyMainFrame", this, "DoSetlabel()");
-//   (fNumber->GetNumberEntry())->Connect("ReturnPressed()", "MyMainFrame", this,
-//                                        "DoSetlabel()");
+   fNumber->GetNumberEntry()->Connect("ReturnPressed()", "MyMainFrame", this,
+                                      "DoSetlabel()");
    AddFrame(fNumber, new TGLayoutHints(kLHintsTop | kLHintsLeft, 5, 5, 5, 5));
    fGframe = new TGGroupFrame(this, "Value");
    fLabel = new TGLabel(fGframe, "No input.");
@@ -75,20 +75,22 @@ MyMainFrame::~MyMainFrame()
 
 void MyMainFrame::DoSetlabel()
 {
+   TObject *sender = (TObject *)gTQSender;
+   if (sender && sender->InheritsFrom("TGTextEntry"))
+      cout << "From ReturnPressed() signal" << endl;
+   else if (sender && sender->InheritsFrom("TGNumberEntry"))
+      cout << "From ValueSet() signal" << endl;
+
    // Slot method connected to the ValueSet(Long_t) signal.
    // It displays the value set in TGNumberEntry widget.
 
-   Int_t val = fNumber->GetNumberEntry()->GetIntNumber();
-   fLabel->SetText(Form( "%ld", val ));
+   fLabel->SetText(Form("%d",fNumber->GetNumberEntry()->GetIntNumber()));
 
    // Parent frame Layout() method will redraw the label showing the new value.
    fGframe->Layout();
-
-   cout << "val = " << val << endl;
 }
 
-void numberentry()
+void numberentry_bertrand()
 {
    new MyMainFrame(gClient->GetRoot(), 50, 50);
 }
-

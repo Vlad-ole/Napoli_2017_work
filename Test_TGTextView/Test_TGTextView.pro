@@ -3,15 +3,14 @@ QT -= gui
 
 CONFIG += c++11
 
-TARGET = Test_GUI_Threads_Bertrand
+TARGET = Test_TGTextView
 CONFIG += console
 CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += \
-    main.cxx \
-    MyDisplay.cxx
+SOURCES += main.cpp \
+    mymainframe.cpp
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
 
@@ -97,8 +96,8 @@ LIBS += -L"/home/darkside/Vlad_Programs/root/lib" \
  -lXMLIO
 
 HEADERS += \
-    LinkDef.h \
-    MyDisplay.h
+    mymainframe.h \
+    linkdef.h
 
 DISTFILES += \
     script.txt

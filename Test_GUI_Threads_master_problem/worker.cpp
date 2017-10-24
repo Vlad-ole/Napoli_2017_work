@@ -37,10 +37,13 @@ void *Worker::handle(void *ptr)
           data_str.data_vv[1][i] = gRandom->Rndm()*10;
       }
 
-      p->h1->Lock();
+      //p->h1->Lock();
+      TThread::Lock();
       printf("You are in p->h1->Lock() (Thread %d); cnt = %d \n", syscall(__NR_gettid), counter);
       p->Draw_Graphs(data_str);
-      p->h1->UnLock();
+      TThread::UnLock();
+      //p->h1->UnLock();
+
 
 
       //SendValue(counter);

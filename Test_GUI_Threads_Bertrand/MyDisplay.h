@@ -5,6 +5,11 @@
 #ifndef ADisplay_h
 #define ADisplay_h
 
+//to show thread_id for linux systems
+#include <sys/types.h>
+#include <sys/syscall.h>
+
+
 #include <TGFrame.h>
 #include <TThread.h>
 #include <TRootEmbeddedCanvas.h>

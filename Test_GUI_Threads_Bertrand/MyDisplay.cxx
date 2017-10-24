@@ -30,6 +30,7 @@ ClassImp(MyDisplay)
 void *MyDisplay::ConsumerFunc(void *aPtr)
 {
    MyDisplay *p = (MyDisplay*)aPtr;
+   printf("You are in MyDisplay::ConsumerFunc(...) (Thread %d) \n", syscall(__NR_gettid));
 
    Double_t value;
    if (!gRandom)
@@ -42,14 +43,16 @@ void *MyDisplay::ConsumerFunc(void *aPtr)
             value  = (Int_t)(TMath::Sin( j * 4 * TMath::Pi() / p->nPoints)*100  );
             value += Int_t((r.Rndm()-0.5)*5);
             TThread::Lock();
+            if (j==0) printf("You are in TThread::Lock() (Thread %d) \n", syscall(__NR_gettid));
             p->mGraphs[i]->SetPoint(j, j, value);
             TThread::UnLock();
          }
       }
+      printf("You are in MyDisplay::ConsumerFunc(...) before TCanvas  (Thread %d) \n", syscall(__NR_gettid));
       TCanvas *aCanvas = p->fEcan->GetCanvas();
       aCanvas->Modified();
       aCanvas->Update();
-      gSystem->Sleep(10);
+      gSystem->Sleep(1000);
    }
    p->aCond = 1;
    return 0;
@@ -59,6 +62,8 @@ void *MyDisplay::ConsumerFunc(void *aPtr)
 //===============================================================================
 MyDisplay::MyDisplay(const TGWindow *p, UInt_t w, UInt_t h):TGMainFrame(p,w,h)
 {
+   printf("You are in MyDisplay::MyDisplay(...) (Thread %d) \n", syscall(__NR_gettid));
+
    aCond = 0;
    aNrGraphs = 4;
    nPoints = 512;
@@ -111,11 +116,15 @@ MyDisplay::MyDisplay(const TGWindow *p, UInt_t w, UInt_t h):TGMainFrame(p,w,h)
    MapSubwindows();
    Resize(GetDefaultSize());
    MapWindow();
+
+
 }
 
 //===============================================================================
 void MyDisplay::UpdateGraph()
 {
+   printf("You are in MyDisplay::UpdateGraph() (Thread %d) \n", syscall(__NR_gettid));
+
    updateStop->SetEnabled(kTRUE);
    update->SetEnabled(kFALSE);
    aCond = 1;

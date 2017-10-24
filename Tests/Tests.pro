@@ -19,7 +19,23 @@ SOURCES += main.cpp \
     signal_slot_int.cpp \
     threads_read_data.cpp \
     signal_slot_vector_bertrand.cpp \
-    numberentry.C
+    numberentry.C \
+    vector_shift.cpp \
+    histgetmean.cpp \
+    hsum.cpp \
+    timer.cpp \
+    numberentry_bertrand.cpp \
+    line_1.cpp \
+    line_2.cpp \
+    generate_signal.cpp \
+    guiwithcint.cpp \
+    tdatime.cpp \
+    range_limits.cpp \
+    ntupletabletest.C \
+    hist_fit.cpp \
+    peaks.C \
+    tgtextview_test.cpp \
+    searchhr1.cpp
 
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
