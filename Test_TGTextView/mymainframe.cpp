@@ -51,15 +51,15 @@ void *MyMainFrame::ReadoutLoop(void *aPtr)
 
 void MyMainFrame::Do()
 {
-    Int_t nbins = 100;
+    Int_t nbins = 40;
     Double_t xmin = -2;
-    Double_t xmax = 10;
+    Double_t xmax = 2;
 
     TRandom3 rnd;
     h1 = new TH1F("h1", "hist",nbins, xmin, xmax);
 
     Double_t val = 0;
-    const double sigma = 0.2;
+    const double sigma = 0.1;
     for (int i = 0; i < 100000; ++i)
     {
         val = rnd.PoissonD(3) + rnd.Gaus(0, sigma);
@@ -76,9 +76,9 @@ void MyMainFrame::Do()
     //TCanvas *c1 = eCanvas->GetCanvas();
     TCanvas *c1 = new TCanvas("c1","cancas", 500, 500);
     c1->cd();
-    h1->DrawNormalized();
+    h1->Draw("E1");
     fit_hist->h_discrete->SetLineColor(kGreen);
-    fit_hist->h_discrete->DrawNormalized("same");
+    fit_hist->h_discrete->Draw("E1 same");
     fit_hist->fit_func->Draw("same");
 
     c1->Modified();

@@ -152,6 +152,9 @@ void FitHist::GetLP()
 {
     //discrete hist
     //vector<pair<Int_t, Int_t> > hist_discrete_xy_values;
+    params.pedestal_shift = 0;
+    params.spe_value = 1;
+
     Int_t min_npe = (h->GetBinCenter(1) - params.pedestal_shift)/(params.spe_value) + 0.5;
     Int_t max_npe = (h->GetBinCenter(params.nbins_initial) - params.pedestal_shift)/(params.spe_value) + 0.5;
     if (!is_ped_on_the_left)
@@ -162,16 +165,18 @@ void FitHist::GetLP()
     }
     //cout <<  "min_npe = "<< min_npe << endl;
     //cout <<  "max_npe = "<< max_npe << endl;
-    vector<Double_t> hist_discrete_x(max_npe - min_npe);
+    vector<Double_t> hist_discrete_x(max_npe);
 
     //in case of negative signal I will use invertied X axis
     Short_t sign = is_ped_on_the_left ? 1 : -1 ;
     for (int i = 0; i < params.nbins_initial; ++i)
     {
         Int_t val = (h->GetBinCenter(i+1)*sign - params.pedestal_shift)/(params.spe_value) + 0.5;
+        //Int_t val = h->GetBinCenter(i+1) + 0.5; // test
         if(val >= 0)
         {
             hist_discrete_x[val] += h->GetBinContent(i+1);
+            cout << i << " " << h->GetBinCenter(i+1) << " " << val << " " << h->GetBinContent(i+1) << " " << hist_discrete_x[val] << endl;
         }
     }
 
@@ -197,15 +202,20 @@ void FitHist::GetLP()
 
     VinogradovPDF vin_pdf;
     fit_func = new TF1("fit",vin_pdf,0,100,2);
-    h_discrete = new TH1F("h_pdf", "h_pdf", hist_discrete_x.size(), min_npe, max_npe);
+    h_discrete = new TH1F("h_pdf", "h_pdf", hist_discrete_x.size(), -0.5, max_npe - 0.5);
     for (int i = 0; i < hist_discrete_x.size(); ++i)
     {
         h_discrete->SetBinContent(i+1, hist_discrete_x[i]);
     }
-    fit_func->SetParLimits(0,0,0.2);
+
+    fit_func->SetParameter(0, 0);
+    fit_func->FixParameter(0, 0);
+
+    //fit_func->SetParameter(1, 3);
+    //fit_func->SetParLimits(1, 3, 3);
 
     fit_func->SetParameter(1, params.L_01_peaks);
-    fit_func->SetParLimits(1, params.L_01_peaks*0.8, params.L_01_peaks*1.2);
+    fit_func->SetParLimits(1, params.L_01_peaks*0.9, params.L_01_peaks*1.1);
 
     h_discrete->Fit("fit" , "N" );
     //h_discrete->Draw("same");
