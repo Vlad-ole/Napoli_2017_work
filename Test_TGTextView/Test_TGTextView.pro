@@ -10,7 +10,9 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    mymainframe.cpp
+    mymainframe.cpp \
+    fithist.cpp \
+    vinogradovpdf.cpp
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
 
@@ -97,7 +99,9 @@ LIBS += -L"/home/darkside/Vlad_Programs/root/lib" \
 
 HEADERS += \
     mymainframe.h \
-    linkdef.h
+    linkdef.h \
+    fithist.h \
+    vinogradovpdf.h
 
 DISTFILES += \
     script.txt

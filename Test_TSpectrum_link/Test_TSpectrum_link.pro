@@ -3,45 +3,13 @@ QT -= gui
 
 CONFIG += c++11
 
-TARGET = Tests
+TARGET = Test_TSpectrum_link
 CONFIG += console
 CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += main.cpp \
-    threads.C \
-    threads_vlad.cpp \
-    handle_as_class_member.cpp \
-    signal_slot_vector.cpp \
-    signal_slot_array.cpp \
-    signal_slot_vector_no_std.cpp \
-    signal_slot_int.cpp \
-    threads_read_data.cpp \
-    signal_slot_vector_bertrand.cpp \
-    numberentry.C \
-    vector_shift.cpp \
-    histgetmean.cpp \
-    hsum.cpp \
-    timer.cpp \
-    numberentry_bertrand.cpp \
-    line_1.cpp \
-    line_2.cpp \
-    generate_signal.cpp \
-    guiwithcint.cpp \
-    tdatime.cpp \
-    range_limits.cpp \
-    ntupletabletest.C \
-    hist_fit.cpp \
-    peaks.C \
-    tgtextview_test.cpp \
-    searchhr1.cpp \
-    check_button.cpp \
-    TestGraphics.cpp \
-    check_button_2.cpp \
-    guitest.cpp \
-    fit_in_another_thread.cpp
-
+SOURCES += main.cpp
 
 INCLUDEPATH += "/home/darkside/Vlad_Programs/root/include"
 
@@ -126,6 +94,8 @@ LIBS += -L"/home/darkside/Vlad_Programs/root/lib" \
  -lX3d \
  -lXMLIO
 
-HEADERS +=
+HEADERS += \
+    linkdef.h
 
-DISTFILES +=
+DISTFILES += \
+    script.txt

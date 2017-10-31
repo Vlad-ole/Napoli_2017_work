@@ -5,7 +5,6 @@ VinogradovPDF::VinogradovPDF()
 
 }
 
-
 Double_t VinogradovPDF::GetVinogradovPDFValue(UInt_t k, Double_t p, Double_t L)
 {
     Double_t f = 0;

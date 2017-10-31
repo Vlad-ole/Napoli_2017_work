@@ -37,6 +37,8 @@
 #include "TGTextView.h"
 #include <Getline.h>
 
+#include "TRandom3.h"
+
 //to show thread_id for linux systems
 #include <sys/types.h>
 #include <sys/syscall.h>
@@ -44,18 +46,20 @@
 class MyMainFrame
 {
 public:
-    MyMainFrame(const TGWindow *p,UInt_t w,UInt_t h);
+    MyMainFrame(/*const TGWindow *p,UInt_t w,UInt_t h*/);
     virtual ~MyMainFrame();
 
     void RunThread();
+    void Do();
 
 private:
     static void *ReadoutLoop(void*);
 
     TGMainFrame *fMain;
-    TGTextView *twStatus_label;
-
     TThread *slave_thread;
+
+    TH1F *h1;
+    TRootEmbeddedCanvas *eCanvas;
 };
 
 #endif // MYMAINFRAME_H
